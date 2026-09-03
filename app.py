@@ -10,13 +10,24 @@ import streamlit as st
 from scipy.optimize import differential_evolution
 
 
-st.set_page_config(page_title="Solar Energy Planner", page_icon="☀️", layout="wide")
+st.set_page_config(page_title="Solar Yield Optimizer", page_icon="☀️", layout="wide")
 st.markdown("""
 <style>
-  .block-container {padding-top: 2rem;}
-  div[data-testid="stMetric"] {background: #fff9ed; border: 1px solid #f4c96b; border-radius: 14px; padding: 16px;}
-  div[data-testid="stMetricLabel"] {font-size: .95rem; font-weight: 700; color: #334155;}
-  div[data-testid="stMetricValue"] {font-size: 2rem; font-weight: 800; color: #0f172a;}
+  .stApp {background: radial-gradient(circle at 78% 0%, #fa9b54 0%, #ec5d4e 20%, #45205f 52%, #101828 100%);}
+  .block-container {padding-top: 2rem; max-width: 1280px;}
+  h1, h2, h3, p, label {font-weight: 700 !important;}
+  [data-testid="stSidebar"] {background: rgba(13, 18, 36, .93); border-right: 1px solid rgba(255, 255, 255, .18);}
+  [data-testid="stSidebar"] * {color: #f8fafc !important;}
+  div[data-testid="stMetric"] {background: rgba(255, 249, 237, .96); border: 1px solid #ffd27a; border-radius: 16px; padding: 18px; box-shadow: 0 8px 24px rgba(15, 23, 42, .22);}
+  div[data-testid="stMetricLabel"] {font-size: .92rem; font-weight: 800; color: #334155 !important;}
+  div[data-testid="stMetricValue"] {font-size: 2rem; font-weight: 900; color: #111827 !important;}
+  [data-testid="stSidebar"] .stButton > button {background: linear-gradient(90deg, #f97316, #ef4444); color: white !important; border: 0; border-radius: 10px; font-weight: 900; min-height: 48px;}
+  .hero {background: linear-gradient(105deg, rgba(15,23,42,.90), rgba(15,23,42,.46)); border: 1px solid rgba(255,255,255,.32); border-radius: 22px; padding: 26px 30px; margin: 0 0 22px 0; box-shadow: 0 12px 30px rgba(0,0,0,.22);}
+  .hero h1 {color: #fff7ed; font-size: 2.65rem; margin: 0;}
+  .hero p {color: #fff7ed; font-size: 1.08rem; margin: 8px 0 0;}
+  .section-title {color: #fff7ed; font-size: 1.45rem; font-weight: 900; margin: 26px 0 8px;}
+  [data-testid="stCaptionContainer"] p {color: #fff7ed !important;}
+  .stAlert {border-radius: 12px; font-weight: 700;}
 </style>
 """, unsafe_allow_html=True)
 
@@ -132,21 +143,25 @@ def energy_table(irradiance: np.ndarray, weather: pd.DataFrame, area: float) -> 
     return result
 
 
-st.title("☀️ Solar Energy Planner")
-st.caption("Find the best panel angle, strongest solar-collection hours, and energy outlook for any location.")
+st.markdown("""
+<div class="hero">
+  <h1>☀️ Make your solar work harder.</h1>
+  <p>Tell us where your panels are, and see the best angle, best collection times, and energy outlook.</p>
+</div>
+""", unsafe_allow_html=True)
 
 with st.sidebar:
-    st.header("1. Location")
+    st.header("1. Where are your panels?")
     country = st.text_input("Country", "United States")
     state = st.text_input("State / province", "Arizona")
     city = st.text_input("City", "Phoenix")
     postal_code = st.text_input("ZIP / postal code", "")
     st.divider()
-    st.header("2. Panel and plan")
+    st.header("2. Your solar system")
     panel_area = st.slider("Panel area (m²)", 1.0, 100.0, 15.0, 0.5)
-    interval = st.selectbox("Optimization plan", ["Daily", "Monthly", "Quarterly", "Biannual", "Annual"], help="Uses live seven-day forecast data. Longer plans are forecast-based projections, not historical simulations.")
-    run = st.button("Find my best solar plan", type="primary", use_container_width=True)
-    st.caption("Energy estimate assumes a 20% efficient panel. Change the code later if your panel's efficiency differs.")
+    interval = st.selectbox("How often can you adjust the panels?", ["Daily", "Monthly", "Quarterly", "Biannual", "Annual"], help="Uses live seven-day forecast data. Longer plans are forecast-based projections, not historical simulations.")
+    run = st.button("Optimize my solar", type="primary", use_container_width=True)
+    st.caption("Uses a 20% panel-efficiency estimate for simple planning.")
 
 if "run" not in st.session_state:
     st.session_state.run = True
@@ -201,15 +216,15 @@ if st.session_state.run:
     if interval != "Daily":
         st.info(f"{interval} total is a {days_in_plan}-day projection based on the average of this seven-day forecast.")
 
-    st.subheader("Your recommended setup")
+    st.markdown('<div class="section-title">Your best solar plan</div>', unsafe_allow_html=True)
     c1, c2, c3, c4 = st.columns(4)
-    c1.metric("Recommended tilt", f"{best_tilt:.1f}°", "Measured up from horizontal")
-    c2.metric("Recommended facing direction", direction_text(best_azimuth), "Azimuth orientation")
-    c3.metric("Predicted daily energy", f"{predicted_daily:.1f} kWh")
-    c4.metric("Gain vs. latitude tilt", f"{gain:+.1f}%")
-    st.metric(f"Estimated {interval.lower()} total", f"{projected_total:.1f} kWh", f"Based on a {panel_area:.1f} m² panel area")
+    c1.metric("Best panel tilt", f"{best_tilt:.1f}°", "Angle up from horizontal")
+    c2.metric("Best direction to face", direction_text(best_azimuth), "South is usually strongest")
+    c3.metric("Energy you could make today", f"{predicted_daily:.1f} kWh")
+    c4.metric("Extra energy vs. latitude tilt", f"{gain:+.1f}%")
+    st.metric(f"Estimated {interval.lower()} energy", f"{projected_total:.1f} kWh", f"For your {panel_area:.1f} m² panel area")
 
-    st.subheader("Best time to collect solar energy")
+    st.markdown('<div class="section-title">Best time to collect solar energy</div>', unsafe_allow_html=True)
     timer_left, timer_right = st.columns(2)
     timer_left.metric("Best collection window", prime_window)
     timer_right.metric("Peak solar time", peak_time, f"{peak_row['panel_irradiance_wm2']:.0f} W/m² at the panel")
@@ -218,18 +233,18 @@ if st.session_state.run:
     chart_left, chart_right = st.columns(2)
     hourly = pd.DataFrame({"Time": weather.iloc[:24]["time"], "Optimized": optimized_irradiance[:24], "Latitude tilt": baseline_irradiance[:24]}).melt("Time", var_name="Setup", value_name="Irradiance (W/m²)")
     with chart_left:
-        st.subheader("Today’s solar capture")
+        st.markdown('<div class="section-title">Today’s solar capture</div>', unsafe_allow_html=True)
         line = px.line(hourly, x="Time", y="Irradiance (W/m²)", color="Setup", template="plotly_white")
         if prime_start is not None:
             line.add_vrect(x0=prime_start, x1=prime_end, fillcolor="#fbbf24", opacity=0.2, line_width=0, annotation_text="Best collection window")
         st.plotly_chart(line, use_container_width=True)
     with chart_right:
-        st.subheader("7-day energy forecast")
+        st.markdown('<div class="section-title">7-day energy forecast</div>', unsafe_allow_html=True)
         daily_energy["date"] = daily_energy["date"].astype(str)
         bar = px.bar(daily_energy, x="date", y="energy_kwh", labels={"date": "Date", "energy_kwh": "Energy (kWh)"}, template="plotly_white", color_discrete_sequence=["#f59e0b"])
         st.plotly_chart(bar, use_container_width=True)
 
-    st.subheader("Future energy prediction")
+    st.markdown('<div class="section-title">Future energy prediction</div>', unsafe_allow_html=True)
     projection = pd.DataFrame({"Period": ["Daily", "Monthly", "Quarterly", "Biannual", "Annual"], "Estimated energy (kWh)": [predicted_daily, predicted_daily * 30, predicted_daily * 91, predicted_daily * 182, predicted_daily * 365]})
     st.plotly_chart(px.bar(projection, x="Period", y="Estimated energy (kWh)", template="plotly_white", color_discrete_sequence=["#0ea5e9"]), use_container_width=True)
 
