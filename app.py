@@ -10,7 +10,7 @@ import streamlit as st
 from scipy.optimize import differential_evolution
 
 
-st.set_page_config(page_title="Solar Yield Optimizer", page_icon="", layout="wide")
+st.set_page_config(page_title="Solar Yield Optimizer", page_icon="☀️", layout="wide")
 st.markdown("""
 <style>
   .stApp {background: radial-gradient(circle at 78% 0%, #fa9b54 0%, #ec5d4e 20%, #45205f 52%, #101828 100%);}
@@ -21,7 +21,7 @@ st.markdown("""
   div[data-testid="stMetric"] {background: rgba(255, 249, 237, .96); border: 1px solid #ffd27a; border-radius: 16px; padding: 18px; box-shadow: 0 8px 24px rgba(15, 23, 42, .22);}
   div[data-testid="stMetricLabel"] {font-size: .92rem; font-weight: 800; color: #334155 !important;}
   div[data-testid="stMetricValue"] {font-size: 2rem; font-weight: 900; color: #111827 !important;}
-  [data-testid="stSidebar"] .stButton > button {background: linear-gradient(90deg, #f97316, #ef4444); color: pink !important; border: 0; border-radius: 10px; font-weight: 900; min-height: 48px;}
+  [data-testid="stSidebar"] .stButton > button {background: linear-gradient(90deg, #f97316, #ef4444); color: white !important; border: 0; border-radius: 10px; font-weight: 900; min-height: 48px;}
   .hero {background: linear-gradient(105deg, rgba(15,23,42,.90), rgba(15,23,42,.46)); border: 1px solid rgba(255,255,255,.32); border-radius: 22px; padding: 26px 30px; margin: 0 0 22px 0; box-shadow: 0 12px 30px rgba(0,0,0,.22);}
   .hero h1 {color: #fff7ed; font-size: 2.65rem; margin: 0;}
   .hero p {color: #fff7ed; font-size: 1.08rem; margin: 8px 0 0;}
