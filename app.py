@@ -18,10 +18,44 @@ st.markdown("""
   h1, h2, h3, p, label {font-weight: 700 !important;}
   [data-testid="stSidebar"] {background: rgba(13, 18, 36, .93); border-right: 1px solid rgba(255, 255, 255, .18);}
   [data-testid="stSidebar"] * {color: #f8fafc !important;}
-  div[data-testid="stMetric"] {background: rgba(255, 249, 237, .96); border: 1px solid #ffd27a; border-radius: 16px; padding: 18px; box-shadow: 0 8px 24px rgba(15, 23, 42, .22);}
-  div[data-testid="stMetricLabel"] {font-size: .92rem; font-weight: 800; color: #334155 !important;}
-  div[data-testid="stMetricValue"] {font-size: 2rem; font-weight: 900; color: #111827 !important;}
-  [data-testid="stSidebar"] .stButton > button {background: linear-gradient(90deg, #f97316, #ef4444); color: white !important; border: 0; border-radius: 10px; font-weight: 900; min-height: 48px;}
+  div[data-testid="stMetric"] {
+    background: rgba(255, 249, 237, .96);
+    border: 1px solid #ffd27a;
+    border-radius: 16px;
+    padding: 18px;
+    box-shadow: 0 8px 24px rgba(15, 23, 42, .22);
+}
+
+div[data-testid="stMetric"] [data-testid="stMetricLabel"],
+div[data-testid="stMetric"] [data-testid="stMetricLabel"] *,
+div[data-testid="stMetric"] label {
+    font-size: .92rem !important;
+    font-weight: 800 !important;
+    color: #334155 !important;
+    opacity: 1 !important;
+}
+
+div[data-testid="stMetric"] [data-testid="stMetricValue"],
+div[data-testid="stMetric"] [data-testid="stMetricValue"] * {
+    font-size: 2rem !important;
+    font-weight: 900 !important;
+    color: #111827 !important;
+    opacity: 1 !important;
+}
+
+div[data-testid="stMetric"] [data-testid="stMetricDelta"],
+div[data-testid="stMetric"] [data-testid="stMetricDelta"] * {
+    opacity: 1 !important;
+}
+
+[data-testid="stSidebar"] .stButton > button {
+    background: linear-gradient(90deg, #f97316, #ef4444);
+    color: white !important;
+    border: 0;
+    border-radius: 10px;
+    font-weight: 900;
+    min-height: 48px;
+}
   .hero {background: linear-gradient(105deg, rgba(15,23,42,.90), rgba(15,23,42,.46)); border: 1px solid rgba(255,255,255,.32); border-radius: 22px; padding: 26px 30px; margin: 0 0 22px 0; box-shadow: 0 12px 30px rgba(0,0,0,.22);}
   .hero h1 {color: #fff7ed; font-size: 2.65rem; margin: 0;}
   .hero p {color: #fff7ed; font-size: 1.08rem; margin: 8px 0 0;}
