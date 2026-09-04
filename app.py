@@ -35,11 +35,13 @@ div[data-testid="stMetric"] label {
     opacity: 1 !important;
 }
 
-div[data-testid="stMetric"] [data-testid="stMetricValue"],
-div[data-testid="stMetric"] [data-testid="stMetricValue"] * {
-    font-size: 2rem !important;
+div[data-testid="stMetricValue"] {
+    font-size: 1.7rem !important;
     font-weight: 900 !important;
     color: #111827 !important;
+    white-space: normal !important;
+    overflow: visible !important;
+    text-overflow: clip !important;
     opacity: 1 !important;
 }
 
