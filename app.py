@@ -10,7 +10,7 @@ import streamlit as st
 from scipy.optimize import differential_evolution
 
 
-st.set_page_config(page_title="Solar Yield Optimizer", page_icon="☀️", layout="wide")
+st.set_page_config(page_title="Solar Yield Optimizer", page_icon="", layout="wide")
 st.markdown("""
 <style>
   .stApp {background: radial-gradient(circle at 78% 0%, #fa9b54 0%, #ec5d4e 20%, #45205f 52%, #101828 100%);}
