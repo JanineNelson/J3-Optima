@@ -206,6 +206,7 @@ $$
 **Meaning:** The model limits the panel to orientations between horizontal and vertical. This is a physical and practical mounting bound.
 
 ### 4.3 Radian conversion equality
+(Modeling assumptions / data-generating relations)
 
 $$
 \beta_r = \frac{\pi\beta}{180}.
