@@ -337,6 +337,8 @@ $$
 \cos\delta\cos(\phi-\beta)\cos\omega.
 $$
 
+This expression is algebraically equivalent to the general angle-of-incidence formula in Section 3.1. For a panel fixed due south ($\gamma_p=180^\circ$), tilting the surface by $\beta$ has the same effect as evaluating a horizontal surface at a shifted latitude of $\phi-\beta$, which is why $\beta$ replaces $\phi$ here and the solar-azimuth term $\gamma_s$ no longer appears explicitly.
+
 ### 7.2 Demonstration irradiance profile
 
 To keep the code completely reproducible without a weather-data download, the demonstration uses
