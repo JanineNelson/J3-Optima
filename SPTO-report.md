@@ -215,7 +215,7 @@ $$
 **Meaning:** Trigonometric functions in the numerical model operate in radians, while the design variable is reported in degrees for readability.
 
 ### 4.4 Irradiance consistency equality
-
+(Modeling assumptions / data-generating relations)
 For each time step, the demonstration constructs horizontal irradiance as
 
 $$
@@ -235,6 +235,7 @@ $$
 **Meaning:** When the Sun is behind the front face of the panel, the direct-beam contribution is set to zero instead of allowing mathematically negative irradiance.
 
 ### 4.6 Nonnegative irradiance inputs
+(Modeling assumptions / data-generating relations)
 
 $$
 DNI_t\ge0,\qquad DHI_t\ge0,\qquad GHI_t\ge0.
