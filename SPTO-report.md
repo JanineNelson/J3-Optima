@@ -87,8 +87,7 @@ The optimization of tilt does not require $A$ or a constant $\eta$ because multi
 The angle of incidence (AOI) is the angle between the incoming direct solar ray and the normal vector of the panel. Sandia PVPMC gives the general relation [2]:
 
 $$
-\theta_{i,t}(\beta)
-=
+\theta_{i,t}(\beta) =
 \cos^{-1}\left[
 \cos(\theta_{z,t})\cos(\beta_r)
 +
