@@ -396,7 +396,7 @@ $$
 The modeled horizontal-panel value was approximately 2,207.0 kWh/m², so the optimized tilt increased the objective by about
 
 $$
-\boxed{13.9\%}.
+13.9\%
 $$
 
 ### 8.1 Comparison of candidate tilt angles
