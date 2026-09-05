@@ -295,7 +295,7 @@ The mathematical model translates a complex physical system into a manageable op
 
 These assumptions are appropriate for a classroom optimization formulation because they isolate the key engineering decision: tilt. A production design should use site-specific weather, shading, module characteristics, and economic objectives.
 
-### Practical Limitations
+#### Practical Limitations
 
 This optimization model is intended as a planning tool rather than a final engineering design. It does not explicitly account for site-specific shading, roof structural strength, mounting hardware, electrical design, permitting requirements, utility regulations, or manufacturer installation requirements. In addition, the web application depends on live weather and geocoding services, so forecast availability and results may vary. A real solar installation would require additional site-specific engineering analysis.
 ---
