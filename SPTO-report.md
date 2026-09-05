@@ -216,6 +216,7 @@ $$
 
 ### 4.4 Irradiance consistency equality
 (Modeling assumptions / data-generating relations)
+
 For each time step, the demonstration constructs horizontal irradiance as
 
 $$
