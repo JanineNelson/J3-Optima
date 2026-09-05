@@ -99,8 +99,7 @@ $$
 Equivalently, define the cosine of incidence as
 
 $$
-c_t(\beta)
-=
+c_t(\beta) =
 \cos(\theta_{z,t})\cos(\beta_r)
 +
 \sin(\theta_{z,t})\sin(\beta_r)
@@ -124,24 +123,21 @@ $$
 For the base model, sky-diffuse irradiance is represented by the isotropic-sky expression:
 
 $$
-G_{d,t}(\beta)
-=
+G_{d,t}(\beta) =
 DHI_t\left(\frac{1+\cos\beta_r}{2}\right).
 $$
 
 Ground-reflected irradiance is modeled as
 
 $$
-G_{g,t}(\beta)
-=
+G_{g,t}(\beta) =
 \rho_g GHI_t\left(\frac{1-\cos\beta_r}{2}\right).
 $$
 
 The total plane-of-array irradiance at time $t$ is therefore
 
 $$
-G_{POA,t}(\beta)
-=
+G_{POA,t}(\beta) =
 DNI_t\max(0,c_t(\beta))
 +
 DHI_t\left(\frac{1+\cos\beta_r}{2}\right)
@@ -156,8 +152,7 @@ This follows the standard modeling idea that POA irradiance is the sum of beam, 
 The optimization is a **maximization** problem. The annual incident solar energy per unit area is
 
 $$
-E(\beta)
-=
+E(\beta) =
 \sum_{t=1}^{T}
 G_{POA,t}(\beta)\Delta t.
 $$
@@ -167,8 +162,7 @@ When irradiance is in W/m² and $\Delta t$ is in hours, dividing by 1000 convert
 $$
 \boxed{
 \max_{\beta}\;
-E(\beta)
-=
+E(\beta) =
 \frac{\Delta t}{1000}
 \sum_{t=1}^{T}
 \left[
@@ -307,8 +301,7 @@ These assumptions are appropriate for a classroom optimization formulation becau
 For each day of the year, solar declination is approximated by
 
 $$
-\delta_n
-=
+\delta_n =
 23.45^\circ
 \sin\left(\frac{360^\circ(284+n)}{365}\right),
 $$
@@ -324,8 +317,7 @@ $$
 The solar zenith cosine is computed from latitude $\phi$, declination $\delta$, and hour angle $\omega$:
 
 $$
-\cos\theta_z
-=
+\cos\theta_z =
 \sin\phi\sin\delta
 +
 \cos\phi\cos\delta\cos\omega.
@@ -336,8 +328,7 @@ Only time steps with $\cos\theta_z>0$ are included. NREL documents solar-positio
 Because the demonstration panel is fixed due south, the direct-incidence cosine can be written in a compact form:
 
 $$
-\cos\theta_i
-=
+\cos\theta_i =
 \sin\delta\sin(\phi-\beta)
 +
 \cos\delta\cos(\phi-\beta)\cos\omega.
