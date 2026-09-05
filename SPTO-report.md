@@ -206,7 +206,7 @@ $$
 **Meaning:** The model limits the panel to orientations between horizontal and vertical. This is a physical and practical mounting bound.
 
 ### 4.3 Radian conversion equality
-(Modeling assumptions / data-generating relations)
+(Modeling mptions / data-generating relations)
 
 $$
 \beta_r = \frac{\pi\beta}{180}.
@@ -215,7 +215,7 @@ $$
 **Meaning:** Trigonometric functions in the numerical model operate in radians, while the design variable is reported in degrees for readability.
 
 ### 4.4 Irradiance consistency equality
-(Modeling assumptions / data-generating relations)
+(Modeling mptions / data-generating relations)
 
 For each time step, the demonstration constructs horizontal irradiance as
 
@@ -236,7 +236,7 @@ $$
 **Meaning:** When the Sun is behind the front face of the panel, the direct-beam contribution is set to zero instead of allowing mathematically negative irradiance.
 
 ### 4.6 Nonnegative irradiance inputs
-(Modeling assumptions / data-generating relations)
+(Modeling mptions / data-generating relations)
 
 $$
 DNI_t\ge0,\qquad DHI_t\ge0,\qquad GHI_t\ge0.
@@ -295,6 +295,9 @@ The mathematical model translates a complex physical system into a manageable op
 
 These assumptions are appropriate for a classroom optimization formulation because they isolate the key engineering decision: tilt. A production design should use site-specific weather, shading, module characteristics, and economic objectives.
 
+### Practical Limitations
+
+This optimization model is intended as a planning tool rather than a final engineering design. It does not explicitly account for site-specific shading, roof structural strength, mounting hardware, electrical design, permitting requirements, utility regulations, or manufacturer installation requirements. In addition, the web application depends on live weather and geocoding services, so forecast availability and results may vary. A real solar installation would require additional site-specific engineering analysis.
 ---
 
 ## 7. Solution Methodology
